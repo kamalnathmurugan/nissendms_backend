@@ -16,6 +16,17 @@ from sqlalchemy.exc import OperationalError
 from .auth import AuthError, authenticate_user, check_email_in_tenant, store_user_profile
 from .db.base import Base, engine, SessionLocal
 from .db.models import User
+"""Stub FastAPI for the SharePoint Embedded DMS — Phase A (UI-first).
+
+Serves realistic, correctly-shaped data from an in-memory store so the React UI
+can be built against the final endpoint contracts. No Graph/OCR/DB yet.
+"""
+import re
+
+from fastapi import FastAPI, Form, HTTPException, Response, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+
 from .store import DuplicateFile, store
 
 app = FastAPI(title="Vessel DMS (stub)", version="0.1.0")
